@@ -7,7 +7,7 @@ export class Product {
     @PrimaryGeneratedColumn('uuid')
     id_product: string;
 
-    @Column()
+    @Column({nullable: true})
     name: string;
     
     @Column({nullable: true})
@@ -22,7 +22,7 @@ export class Product {
     @Column({default: true})
     disponible: boolean;
 
-    @ManyToOne(() => User, { onDelete: 'CASCADE' } )
+    @ManyToOne(() => User, { onDelete: 'CASCADE', eager: true } )
     @JoinColumn({ name: 'id_user'})
     user: User;
 
