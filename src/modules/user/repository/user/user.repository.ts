@@ -21,4 +21,12 @@ export class UserRepository{
         // console.log(await this.repo.find());             
         return await this.repo.find();
     }
+
+    async findOne(id: string): Promise<User> {
+        const user = await this.repo.findOne({where: {id}});
+        if(!user){
+            throw new Error('User not found');
+        }
+        return user;
+    }
 }
