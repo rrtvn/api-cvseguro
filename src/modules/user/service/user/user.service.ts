@@ -9,8 +9,7 @@ import { UserRepository } from '../../repository/user/user.repository';
 @Injectable()
 export class UserService {
     constructor(
-        private readonly userRepository: UserRepository
-    ){}
+        private readonly userRepository: UserRepository){}
 
     create(user){
         return this.userRepository.create(user);
@@ -18,5 +17,9 @@ export class UserService {
 
     findAll(){
         return this.userRepository.findAll();
+    }
+
+    findOneUser(id){
+        return this.userRepository.findOne(id);
     }
 }

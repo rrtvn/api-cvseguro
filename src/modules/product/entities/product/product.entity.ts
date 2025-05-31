@@ -1,28 +1,28 @@
 import { User } from "src/modules/user/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
-Entity('products')
+@Entity('products')
 export class Product {
 
     @PrimaryGeneratedColumn('uuid')
     id_product: string;
 
-    @Column()
+    @Column({nullable: true})
     name: string;
     
-    @Column()
+    @Column({nullable: true})
     description: string;
     
-    @Column()
+    @Column('numeric', { precision: 10, scale: 2 })
     price: number;
     
-    @Column()
-    date_public: Date;
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+    data_public: Date;
     
-    @Column()
+    @Column({default: true})
     disponible: boolean;
 
-    @ManyToOne(() => User, {eager: true})
+    @ManyToOne(() => User, { onDelete: 'CASCADE', eager: true } )
     @JoinColumn({ name: 'id_user'})
     user: User;
 

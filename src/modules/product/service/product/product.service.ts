@@ -3,13 +3,13 @@ import { ProductRepository } from '../../repository/product.repository';
 
 @Injectable()
 export class ProductService {
-    constructor(private readonly repo: ProductRepository) {}
+    constructor(private readonly productRepository: ProductRepository) {}
 
     create(product){
-        return this.repo.create(product);
+        return this.productRepository.create(product);
     }
 
     findAll(){
-        return this.repo.findAll();
+        return this.productRepository.findAll();
     }
 }
