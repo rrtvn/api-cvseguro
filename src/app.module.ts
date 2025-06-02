@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ProductController } from './modules/product/controller/product/product.controller';
 import { ProductService } from './modules/product/service/product/product.service';
 import { CategoryModule } from './modules/category/category.module';
+import { ProductModule } from './modules/product/product.module';
 
 @Module({
   imports: [
@@ -13,8 +14,7 @@ import { CategoryModule } from './modules/category/category.module';
     TypeOrmModule.forRootAsync(typeOrmConfig),
     UserModule,
     CategoryModule,
+    ProductModule,
   ],
-  controllers: [ProductController],
-  providers: [ProductService],
 })
 export class AppModule {}
