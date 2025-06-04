@@ -21,4 +21,19 @@ export class UserRepository{
         // console.log(await this.repo.find());             
         return await this.repo.find();
     }
+
+    async findById(id: string): Promise<User>{
+        const user = await this.repo.findOne({where: {id}});
+        if (!user) throw new Error('User not found');
+        return user;
+    }
+
+    async delete(id: string): Promise<void>{
+        await this.repo.delete(id);
+    }
+
+    async update(id: string, data: Partial<User>): Promise<User>{
+        await this.repo.update(id, data);
+        return this.findById(id);
+    }
 }

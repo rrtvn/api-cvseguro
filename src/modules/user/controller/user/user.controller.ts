@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { UserService } from '../../service/user/user.service';
 import { CreateUserDto } from '../../dto/create-user.dto';
 import { response } from 'express';
+import { User } from '../../entities/user.entity';
 
 @Controller('users')
 export class UserController {
@@ -16,6 +17,20 @@ export class UserController {
     @Get()
     findAll(){
         return this.userService.findAll();
+    }
+
+    @Delete(':id')
+    delete(@Param('id') id: string): Promise<void>{
+        return this.userService.delete(id);
+    }
+
+    @Patch(':id')
+    async updateUser(
+        @Param('id') id: string,
+        @Body() data: Partial<User>,
+
+    ): Promise<User>{
+        return this.userService.update(id, data);
     }
 
 
