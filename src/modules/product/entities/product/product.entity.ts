@@ -1,25 +1,25 @@
 import { User } from "src/modules/user/entities/user.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
-Entity('products')
+@Entity('products')
 export class Product {
 
     @PrimaryGeneratedColumn('uuid')
     id_product: string;
 
-    @Column()
+    @Column({ nullable: true })
     name: string;
     
-    @Column()
+    @Column({ nullable: true })
     description: string;
     
-    @Column()
+    @Column({ nullable: true })
     price: number;
     
-    @Column()
+    @Column({ nullable: true })
     date_public: Date;
     
-    @Column()
+    @Column({ nullable: true })
     disponible: boolean;
 
     @ManyToOne(() => User, {eager: true})

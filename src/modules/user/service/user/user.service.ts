@@ -24,6 +24,8 @@ export class UserService {
         const user = this.userRepository.findById(id);
         if (!user) throw new NotFoundException('User not found');
         await this.userRepository.delete(id);
+        // TODO: SI QUEREMOS ENVIAR UN MENSAJE DE USUARIO ELIMINADO 
+        // DEBERIAMOS ELIMINAR EL VOID 
     }
 
     async update(id: string, data: Partial<User>): Promise<User>{
