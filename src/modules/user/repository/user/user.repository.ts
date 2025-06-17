@@ -22,6 +22,12 @@ export class UserRepository{
         return await this.repo.find();
     }
 
+    async findByEmailWithPassword(email: string): Promise<User>{
+        const user = await this.repo.findOne({where: {email}});
+        if (!user) throw new Error('User not found');
+        return  user;
+    } 
+
     async findById(id: string): Promise<User>{
         const user = await this.repo.findOne({where: {id}});
         if (!user) throw new Error('User not found');

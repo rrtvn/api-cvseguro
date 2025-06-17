@@ -20,6 +20,10 @@ export class UserService {
         return this.userRepository.findAll();
     }
 
+    findByEmailWithPassword(email: string){
+        return this.userRepository.findByEmailWithPassword(email);
+    }
+
     async delete(id: string): Promise<void>{
         const user = this.userRepository.findById(id);
         if (!user) throw new NotFoundException('User not found');
