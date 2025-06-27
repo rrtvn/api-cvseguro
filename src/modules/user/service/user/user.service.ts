@@ -20,8 +20,11 @@ export class UserService {
         return this.userRepository.findAll();
     }
 
+    findByEmail(email: string){
+        return this.userRepository.findByEmail(email);
+    }
     findByEmailWithPassword(email: string){
-        return this.userRepository.findByEmailWithPassword(email);
+        return this.userRepository.findByEmail(email);
     }
 
     async delete(id: string): Promise<{message: string}>{
